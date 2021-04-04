@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import request
-from flask import redirect 
+from flask import redirect
+from flask import render_template
 
 
 app = Flask(__name__)
@@ -15,3 +16,11 @@ def index():
 def red(name):
 	return redirect('https://www.{}.com'.format(name))
 
+@app.route('/istme')
+def istme():
+	infos = {
+	'name':"Mahamadou Kaba",
+	'age' :"24",
+	'hobbies':['Japanese Animations', 'Programming', 'AI in python']
+	}
+	return render_template('me.html', infos = infos)
